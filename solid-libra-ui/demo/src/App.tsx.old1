@@ -23,7 +23,11 @@ export interface ColumnDef<T> {
 */
 
 const h = (n): JSX.Element => {
-  return <div style={{width:"150px", color:"green"}} >{n}</div>
+  return <div style={{width:"150px", color:"green"}} >H {n}</div>
+};
+
+type Person = {
+  name: string;
 };
 
   let ColumnDefs = [
@@ -61,43 +65,6 @@ const h = (n): JSX.Element => {
    
   ];
 
-
-  let ColumnDefs2 = [];
-  let Data2 = [];
-  let MAX_COLUMN = 6;
-  let MAX_ROWN = 20;
-
-  for ( let i=0; i< MAX_COLUMN; i++) {
-      let c = (i + 10).toString(36).toUpperCase();
-      //console.log(i,c);
-      const func = (x) => { return x[i] }
-      ColumnDefs2.push(
-         {
-           //accessorKey: "c",
-           header: h(c),
-           cell: func,
-           enableSorting: false,
-           enableFiltering: false,
-
-         }
-      );
-  }
-
-  for ( let r=0; r< MAX_ROWN; r++) {
-     let row = []
-     for ( let i=0; i< MAX_COLUMN; i++) {
-         let c = (i + 10).toString(36).toUpperCase();
-         //console.log(i,c);
-	 let label = String(r + 1) + c
-         row.push(
-	    label
-         );
-     }
-     Data2.push(row);
-  }
-
-  //console.log(Data2)
-
   return (
     <>
       <style jsx>{`
@@ -129,8 +96,8 @@ const h = (n): JSX.Element => {
       <Button onClick={() => alert("Hello Libra UI!")}>
         Click Me
       </Button>
-      <Table columns={ColumnDefs2} 
-             data={Data2} 
+      <Table columns={ColumnDefs} 
+             data={Data} 
              showRowBorder={true}
 	     rowHeight={30}
 
