@@ -1,0 +1,97 @@
+/* @refresh reload */
+/*
+import { render } from 'solid-js/web'
+import './index.css'
+import App from './App.jsx'
+
+const root = document.getElementById('root')
+
+render(() => <App />, root)
+
+*/
+
+import { render } from "solid-js/web";
+import { VirtualContainer } from "@minht11/solid-virtual-container";
+import { ListItem } from "./list-item";
+import * as styles from "./styles.module.css";
+
+export const createArray = (count) => {
+  const array = [];
+  for (let i = 0; i < count; i += 1) {
+    array.push(0 + i);
+  }
+  return array;
+};
+
+const calculateGridItemSize = (crossAxisSize) => {
+  const minWidth = crossAxisSize > 560 ? 180 : 140;
+
+  const count = Math.floor(crossAxisSize / minWidth);
+  const width = Math.floor(crossAxisSize / count);
+
+  return {
+    width,
+    height: width + 48
+  };
+};
+
+const App = () => {
+  let targetVertical;
+  let targetHorizontal;
+
+  return (
+    <div className={styles.section}>
+      <div ref={targetVertical} className={styles.scrollContainer}>
+        <VirtualContainer
+          items={createArray(1000)}
+          scrollTarget={targetVertical}
+          itemSize={{ height: 150 }}
+        >
+          {ListItem}
+        </VirtualContainer>
+        <h1>Use grid in the same scroll container</h1>
+        <VirtualContainer
+          items={createArray(10000)}
+          scrollTarget={targetVertical}
+          // Calculate how many grid columns to show.
+          crossAxisCount={(measurements) =>
+            Math.floor(
+              measurements.container.cross / measurements.itemSize.cross
+            )
+          }
+          itemSize={calculateGridItemSize}
+        >
+          {ListItem}
+        </VirtualContainer>
+      </div>
+
+      <div ref={targetHorizontal} className={styles.scrollContainerHorizontal}>
+        <VirtualContainer
+          items={createArray(30)}
+          scrollTarget={targetHorizontal}
+          itemSize={{ width: 50 }}
+          direction="horizontal"
+        >
+          {ListItem}
+        </VirtualContainer>
+        <VirtualContainer
+          items={createArray(500)}
+          scrollTarget={targetHorizontal}
+          itemSize={{ width: 50, height: 50 }}
+          crossAxisCount={(measurements) => {
+            return Math.floor(
+              measurements.container.cross / measurements.itemSize.cross
+            );
+          }}
+          direction="horizontal"
+        >
+          {ListItem}
+        </VirtualContainer>
+      </div>
+    </div>
+  );
+};
+
+//render(App, document.getElementById("app"));
+render(App, document.getElementById("root"));
+

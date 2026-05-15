@@ -1,0 +1,17 @@
+{
+  "name": "solid-libra-ui",
+  "private": true,
+  "version": "0.2.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ui:init": "node scripts/init-ui.mjs",
+    "ui:add": "node scripts/add-component.mjs",
+    "ui:build-registry": "node scripts/analyze-deps.mjs > packages/ui/src/registry.json",
+    "dev": "pnpm --filter docs dev"
+  },
+  "keywords": [],
+  "author": "OkihiraHijirikawa",
+  "license": "ISC"
+}
