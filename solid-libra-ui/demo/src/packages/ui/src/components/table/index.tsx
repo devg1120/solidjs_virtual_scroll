@@ -65,9 +65,21 @@ export const Table = <T extends {}>(props: TableProps<T>) => {
       </For>
     </colgroup>
   );
+/*
+    <div class={twMerge("flex flex-col h-full", mergedProps.class)}>
+
+    <div 
+       id="base"
+        style={{ "height": "300px"  }}
+
+    >
+*/
 
   return (
-    <div class={twMerge("flex flex-col h-full", mergedProps.class)}>
+    <div class={twMerge("flex flex-col h-full", mergedProps.class)}
+        style={{ "height": "100%"  }}  //GUSA
+
+    >
       <Show when={mergedProps.enableFiltering}>
         <div class="flex-shrink-0 p-2">
           <Input
@@ -82,10 +94,14 @@ export const Table = <T extends {}>(props: TableProps<T>) => {
       </Show>
 
       <div
+
+        id={"container"}
         ref={setContainerRef}
         onScroll={handleScroll}
-        class="flex-1 rounded-md border border-[var(--lb-table-border-outer)] overflow-auto"
-        style={{ "scroll-padding-top": "32px" }}
+        //class="flex-1 rounded-md border border-[var(--lb-table-border-outer)] overflow-auto"
+        style={{ "scroll-padding-top": "32px"  }}
+        style={{ "overflow-y": "scroll"  }} //GUSA
+        style={{ "height": "100%"  }}       //GUSA
       >
         <table
           class={getTableClasses(

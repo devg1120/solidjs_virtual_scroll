@@ -64,8 +64,8 @@ const h = (n): JSX.Element => {
 
   let ColumnDefs2 = [];
   let Data2 = [];
-  let MAX_COLUMN = 10;
-  let MAX_ROWN = 10000;
+  let MAX_COLUMN = 6;
+  let MAX_ROWN = 2000;
 
   for ( let i=0; i< MAX_COLUMN; i++) {
       let c = (i + 10).toString(36).toUpperCase();
@@ -101,38 +101,30 @@ const h = (n): JSX.Element => {
   return (
     <>
       <style jsx>{`
-
         table {
-          //color: orange;
+          color: orange;
           border-collapse: collapse;
 	  border: solid gray 1px;
         }
-
 	th, td {
 	  border: solid gray 1px;
+
 	}
-
-        .tablebase {
-          height: 400px;
-        }
-
       `}</style>
 
-       <div class="tablebase">
-             <Table columns={ColumnDefs2} 
-                    data={Data2} 
-       	            rowHeight={20}
-       	            enableFiltering={false}
-       	            enableColumnPinning={false}
-             ></Table>
-       </div>
+      <Table columns={ColumnDefs2} 
+             data={Data2} 
+             showRowBorder={true}
+	     rowHeight={30}
+	     layout={fit}
+      ></Table>
+
     </>
   )
 }
 
 /*
-	     layout="fit"
-	     layout="overflow"
+	     layout={fit}
 
 */
 export default App

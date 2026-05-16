@@ -64,8 +64,8 @@ const h = (n): JSX.Element => {
 
   let ColumnDefs2 = [];
   let Data2 = [];
-  let MAX_COLUMN = 10;
-  let MAX_ROWN = 10000;
+  let MAX_COLUMN = 6;
+  let MAX_ROWN = 2000;
 
   for ( let i=0; i< MAX_COLUMN; i++) {
       let c = (i + 10).toString(36).toUpperCase();
@@ -101,38 +101,43 @@ const h = (n): JSX.Element => {
   return (
     <>
       <style jsx>{`
-
         table {
-          //color: orange;
+          color: orange;
           border-collapse: collapse;
 	  border: solid gray 1px;
         }
-
 	th, td {
 	  border: solid gray 1px;
+
 	}
-
-        .tablebase {
-          height: 400px;
-        }
-
       `}</style>
+      <section id="center">
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          class="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count()}
+        </button>
+      </section>
+      <Button onClick={() => alert("Hello Libra UI!")}>
+        Click Me
+      </Button>
+      <Table columns={ColumnDefs2} 
+             data={Data2} 
+             showRowBorder={true}
+	     rowHeight={30}
 
-       <div class="tablebase">
-             <Table columns={ColumnDefs2} 
-                    data={Data2} 
-       	            rowHeight={20}
-       	            enableFiltering={false}
-       	            enableColumnPinning={false}
-             ></Table>
-       </div>
+	     ></Table>
+
     </>
   )
 }
 
-/*
-	     layout="fit"
-	     layout="overflow"
-
-*/
 export default App

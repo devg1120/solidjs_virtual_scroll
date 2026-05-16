@@ -71,6 +71,11 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
       items.push({ index: i, data: data[i] });
     }
 
+    console.log("containerHeight()",
+       containerHeight());
+
+    console.log("virt items.length", totalItems, items.length, startIndex, endIndex)
+
     return {
       items,
       paddingTop: startIndex * rowHeight,
@@ -176,11 +181,14 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
 
   onMount(() => {
     if (!containerRef) return;
+
     const resizeObserver = new ResizeObserver((entries) => {
       setContainerHeight(entries[0].contentRect.height);
     });
     resizeObserver.observe(containerRef);
+    console.log("containerRef height", containerRef.clientHeight);
     setContainerHeight(containerRef.clientHeight);
+
     return () => resizeObserver.disconnect();
   });
 
