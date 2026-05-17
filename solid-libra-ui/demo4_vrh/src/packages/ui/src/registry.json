@@ -1,0 +1,171 @@
+{
+  "accordion": {
+    "path": "packages/ui/src/components/accordion",
+    "dependencies": [
+      "tailwind-merge",
+      "solid-icons",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "avatar": {
+    "path": "packages/ui/src/components/avatar",
+    "dependencies": [
+      "tailwind-merge",
+      "solid-icons",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "button": {
+    "path": "packages/ui/src/components/button",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": [
+      "use-ripple"
+    ]
+  },
+  "calendar": {
+    "path": "packages/ui/src/components/calendar",
+    "dependencies": [
+      "tailwind-merge",
+      "solid-icons",
+      "class-variance-authority"
+    ],
+    "internalDependencies": [
+      "date-picker"
+    ]
+  },
+  "card": {
+    "path": "packages/ui/src/components/card",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "checkbox": {
+    "path": "packages/ui/src/components/checkbox",
+    "dependencies": [
+      "tailwind-merge",
+      "solid-icons",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "combobox": {
+    "path": "packages/ui/src/components/combobox",
+    "dependencies": [
+      "solid-icons",
+      "tailwind-merge"
+    ],
+    "internalDependencies": [
+      "popover",
+      "table",
+      "input"
+    ]
+  },
+  "date-picker": {
+    "path": "packages/ui/src/components/date-picker",
+    "dependencies": [
+      "solid-icons"
+    ],
+    "internalDependencies": [
+      "popover",
+      "calendar",
+      "input"
+    ]
+  },
+  "dialog": {
+    "path": "packages/ui/src/components/dialog",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "drawer": {
+    "path": "packages/ui/src/components/drawer",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "icon-button": {
+    "path": "packages/ui/src/components/icon-button",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": [
+      "use-ripple"
+    ]
+  },
+  "input": {
+    "path": "packages/ui/src/components/input",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "number-input": {
+    "path": "packages/ui/src/components/number-input",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "popover": {
+    "path": "packages/ui/src/components/popover",
+    "dependencies": [
+      "@floating-ui/dom"
+    ],
+    "internalDependencies": []
+  },
+  "radiogroup": {
+    "path": "packages/ui/src/components/radiogroup",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "selector": {
+    "path": "packages/ui/src/components/selector",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": [
+      "popover"
+    ]
+  },
+  "table": {
+    "path": "packages/ui/src/components/table",
+    "dependencies": [
+      "tailwind-merge",
+      "solid-icons"
+    ],
+    "internalDependencies": [
+      "input"
+    ]
+  },
+  "textarea": {
+    "path": "packages/ui/src/components/textarea",
+    "dependencies": [
+      "tailwind-merge",
+      "class-variance-authority"
+    ],
+    "internalDependencies": []
+  },
+  "use-ripple": {
+    "path": "packages/ui/src/components/use-ripple",
+    "dependencies": [],
+    "internalDependencies": []
+  }
+}
