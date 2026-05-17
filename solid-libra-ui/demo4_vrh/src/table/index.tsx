@@ -26,16 +26,11 @@ export const Table = <T extends {}>(props: TableProps<T>) => {
 
 
   const range = (start, end) => Array.from({ length: end - start  }, (_, i) => start + i);
-  const row_index = [];
-  for (let i = virtualizer().startIndex; i < virtualizer().endIndex; i++) {
-      row_index.push( i );
-  }
 
          // <For each={virtualizer().row_index}>
 	 //
          // <For each={range(virtualizer().startIndex, virtualizer().endIndex)}>
 	 //
-         // <For each={row_index}>
 	 //
 
 
@@ -80,7 +75,7 @@ export const Table = <T extends {}>(props: TableProps<T>) => {
               </tr>
             </Show>
 
-            <For each={row_index}>
+            <For each={range(virtualizer().startIndex, virtualizer().endIndex)}>
               {(i) => {
 	        const row = props.data[i];
                 return (
