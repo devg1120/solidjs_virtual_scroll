@@ -25,11 +25,20 @@ export const Table = <T extends {}>(props: TableProps<T>) => {
   } = useTable(mergedProps);
 
 
-  //const range = (start, end) => Array.from({ length: end - start + 1 }, (_, i) => start + i);
   const range = (start, end) => Array.from({ length: end - start  }, (_, i) => start + i);
+  const row_index = [];
+  for (let i = virtualizer().startIndex; i < virtualizer().endIndex; i++) {
+      row_index.push( i );
+  }
 
-          // <For each={virtualizer().row_index}>
-          // <For each={range(virtualizer().startIndex, virtualizer().endIndex)}>
+         // <For each={virtualizer().row_index}>
+	 //
+         // <For each={range(virtualizer().startIndex, virtualizer().endIndex)}>
+	 //
+         // <For each={row_index}>
+	 //
+
+
 
   return (
     <div 
@@ -71,7 +80,7 @@ export const Table = <T extends {}>(props: TableProps<T>) => {
               </tr>
             </Show>
 
-            <For each={virtualizer().row_index}>
+            <For each={row_index}>
               {(i) => {
 	        const row = props.data[i];
                 return (
