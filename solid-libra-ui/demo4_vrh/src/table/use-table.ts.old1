@@ -17,24 +17,6 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
   const [containerHeight, setContainerHeight] = createSignal(0);
   let containerRef: HTMLDivElement | undefined;
 
-  const gsi = (pos) => {
-	//  console.log(pos)
-       for ( let i = 0 ; i < props.padTop.length; i++)  {
-                if ( pos < props.padTop[i] ) {
-                   return i
-		}
-        }
-       return props.padTop.length
-  }
-
-  const gei = (pos) => {
-       for ( let i = 0 ; i < props.padTop.length; i++)  {
-                if ( pos < props.padTop[i] ) {
-                   return i
-		}
-        }
-       return props.padTop.length
-  }
 
   const virtualizer = createMemo(() => {
     const data = props.data;
@@ -44,20 +26,11 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
 
     const startIndex = Math.max(
       0,
-      //Math.floor(scrollTop() / rowHeight) - buffer
-      Math.floor( gsi( scrollTop() )) - buffer
+      Math.floor(scrollTop() / rowHeight) - buffer
     );
-
-    /*
-    console.log(">>>",
-      (scrollTop() + containerHeight()) / rowHeight, "|||",
-      gei(scrollTop() + containerHeight())
-	       )
-	*/
     const endIndex = Math.min(
       totalItems,
-      //Math.ceil((scrollTop() + containerHeight()) / rowHeight) + buffer
-      Math.ceil( gei(scrollTop() + containerHeight()) )   + buffer
+      Math.ceil((scrollTop() + containerHeight()) / rowHeight) + buffer
     );
 
 
