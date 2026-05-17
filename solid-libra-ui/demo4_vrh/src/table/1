@@ -44,10 +44,10 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
       startIndex,
       endIndex,
       row_index,
-      paddingTop: startIndex * rowHeight,
-      paddingBottom: (totalItems - endIndex) * rowHeight,
-      //paddingTop:     props.padTop[startIndex] ,
-      //paddingBottom:  props.padBottom[endIndex] ,
+      //paddingTop: startIndex * rowHeight,
+      //paddingBottom: (totalItems - endIndex) * rowHeight,
+      paddingTop:     props.padTop[startIndex] -100,
+      paddingBottom:  props.padBottom[endIndex] -100,
     };
   });
 

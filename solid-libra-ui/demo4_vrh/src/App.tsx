@@ -18,8 +18,10 @@ function App() {
   let ColumnDefs = [];
   let Data = [];
   let Style = [];
+  let PadTop = [];
+  let PadBottom = [];
   let MAX_COLUMN = 10;
-  let MAX_ROWN = 10000;
+  let MAX_ROWN = 100;
 
   for ( let i=0; i< MAX_COLUMN; i++) {
       let c = (i + 10).toString(36).toUpperCase();
@@ -49,15 +51,33 @@ function App() {
      }
      Data.push(row);
 
-     if ( r % 10 == 0 ) {
+     //Style.push({ height:20 } );
+
+   
+     if ( (r+1) % 10 == 0 ) {
          Style.push({ height:80 } );
-     } else if ( r % 25 == 0 ) {
-         Style.push({ height:200 } );
      } else {
          Style.push({ height:20 } );
      }
+     
   }
 
+  let pad = 0;
+  for (let i =  0; i < Data.length; i++) {
+       PadTop.push(pad);
+       pad += Style[i].height
+  }
+  let total_height = pad;
+
+
+  for (let i =  0; i < Data.length-1; i++) {
+       PadBottom.push( total_height - PadTop[i+1]);
+  }
+  PadBottom.push(0);
+
+  console.log(total_height);
+  console.log(PadTop);
+  console.log(PadBottom);
 
   return (
     <>
@@ -84,6 +104,8 @@ function App() {
                     data={Data} 
                     style={Style} 
        	            rowHeight={20}
+		    padTop={PadTop}
+		    padBottom={PadBottom}
              ></Table>
        </div>
     </>
