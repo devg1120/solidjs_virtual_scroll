@@ -21,7 +21,7 @@ function App() {
   let PadTop = [];
   let PadBottom = [];
   let MAX_COLUMN = 10;
-  let MAX_ROWN = 100;
+  let MAX_ROWN = 1000;
 
   for ( let i=0; i< MAX_COLUMN; i++) {
       let c = (i + 10).toString(36).toUpperCase();
@@ -56,6 +56,8 @@ function App() {
    
      if ( (r+1) % 10 == 0 ) {
          Style.push({ height:80 } );
+     } else if ( (r+1) % 23 == 0 ) {
+         Style.push({ height:180 } );
      } else {
          Style.push({ height:20 } );
      }

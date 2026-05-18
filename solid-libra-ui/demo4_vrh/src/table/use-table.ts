@@ -8,17 +8,16 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
        rowHeight
 */
 
-
+/*
   const [pinnedColumnKeys, setPinnedColumnKeys] = createSignal<Array<keyof T>>(
     []
   );
-
+*/
   const [scrollTop, setScrollTop] = createSignal(0);
   const [containerHeight, setContainerHeight] = createSignal(0);
   let containerRef: HTMLDivElement | undefined;
 
-  const gsi = (pos) => {
-	//  console.log(pos)
+  const getIndex = (pos) => {
        for ( let i = 0 ; i < props.padTop.length; i++)  {
                 if ( pos < props.padTop[i] ) {
                    return i
@@ -26,7 +25,7 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
         }
        return props.padTop.length
   }
-
+/*
   const gei = (pos) => {
        for ( let i = 0 ; i < props.padTop.length; i++)  {
                 if ( pos < props.padTop[i] ) {
@@ -35,17 +34,17 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
         }
        return props.padTop.length
   }
-
+*/
   const virtualizer = createMemo(() => {
     const data = props.data;
     const totalItems = data.length;
-    const buffer = 15; // レンダリングする範囲の前後のバッファ
+    const buffer = 50; // レンダリングする範囲の前後のバッファ
     const rowHeight = props.rowHeight!;
 
     const startIndex = Math.max(
       0,
       //Math.floor(scrollTop() / rowHeight) - buffer
-      Math.floor( gsi( scrollTop() )) - buffer
+      Math.floor( getIndex( scrollTop() )) - buffer
     );
 
     /*
@@ -57,7 +56,7 @@ export const useTable = <T extends {}>(props: TableProps<T>) => {
     const endIndex = Math.min(
       totalItems,
       //Math.ceil((scrollTop() + containerHeight()) / rowHeight) + buffer
-      Math.ceil( gei(scrollTop() + containerHeight()) )   + buffer
+      Math.ceil( getIndex( scrollTop() + containerHeight()) )   + buffer
     );
 
 
